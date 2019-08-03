@@ -15,17 +15,13 @@
 </head>
 
 <body>
-	<h2>Please Enter Details to Fetch</h2>
-	<form method="post" action="getData">
-		
-		Enter From Date(ddmmyyyy) : <input type="text" name="fromDate" /> 
-		
-		Enter To Date (ddmmyyyy) : <input type="text" name="toDate" /> 
-		
-		Enter Currecny : <input type="text" name="currecny" /> 
-		
-		
-	</form>
+	<div class="starter-template">
+        <h1>BitCoin result for date range</h1>
+        
+            <span th:text="'Result is, ' + ${result}"></span>
+        
+    </div>
+
 </body>
 
 </html>

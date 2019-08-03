@@ -25,7 +25,7 @@ public class GetHttpResponse {
 	public static String dateAsOn = null;
 	public static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
 	
-	public static final Comparator<BitMapObj> DOJComparator = new Comparator<BitMapObj>(){
+	public static final Comparator<BitMapObj> DateComparator = new Comparator<BitMapObj>(){
 
 		@Override
 		public int compare(BitMapObj o1, BitMapObj o2) {
@@ -59,8 +59,12 @@ public class GetHttpResponse {
 		in.close();
 
 		ArrayList<BitMapObj> tempBPILst = convertResult(jsonObject);
-		Collections.sort(tempBPILst, DOJComparator);
+		Collections.sort(tempBPILst, DateComparator);
 		bpiLSt = tempBPILst;
+		
+		for(BitMapObj bitMap : tempBPILst) {
+			System.out.println(bitMap.getDate());
+		}
 
 	}
 
@@ -101,5 +105,19 @@ public class GetHttpResponse {
 		str.replaceAll("\"", "");
 		
 		return str;
+	}
+	
+	
+	public static void main(String ar[]) {
+		
+		GetHttpResponse getvalue = new GetHttpResponse();
+		
+		try {
+			getvalue.fetchFullResult();
+		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

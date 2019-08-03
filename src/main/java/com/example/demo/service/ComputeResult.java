@@ -33,12 +33,12 @@ public class ComputeResult {
 			return "Please enter Valid To Date";
 		}
 		
-		if(fromDate.compareTo(toDate) < 0) {
+		if(fromDate.compareTo(toDate) > 0) {
 			return "Date range is not valid";
 		}
 		
 		for(BitMapObj bitMap : GetHttpResponse.bpiLSt ) {
-			if(bitMap.getDate().compareTo(frmDte) > 0) {
+			if(bitMap.getDate().compareTo(frmDte) >= 0) {
 				try {
 					resultJson.put(bitMap.getDate().toString(),  bitMap.getCount());
 				
@@ -49,7 +49,7 @@ public class ComputeResult {
 				}
 			}
 			
-			if( bitMap.getDate().compareTo(tooDate) < 0 )
+			if( bitMap.getDate().compareTo(tooDate) >= 0 )
 				break;
 		}
 		return resultJson.toString();
